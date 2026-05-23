@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -169,13 +168,12 @@ export default function Navbar() {
               transition={{ delay: 0.4 }}
               className="absolute bottom-12 text-center"
             >
-              <p className="text-[#3a3a3a] text-[10px] tracking-[0.4em] uppercase mb-2">Get in touch</p>
+              <p className="text-[#3a3a3a] text-[10px] tracking-[0.4em] uppercase mb-2">Developed by</p>
               <a
-                href="mailto:imane@email.com"
-                className="text-[#c9a84c]/60 text-sm tracking-wide hover:text-[#c9a84c] transition-colors"
+                className="text-[#c9a84c]/60 text-sm font-serif tracking-wide hover:text-[#c9a84c] transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                imane@email.com
+                Imane Ella
               </a>
             </motion.div>
           </motion.div>

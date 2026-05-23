@@ -3,6 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+// Safe generic placeholders for your public showcase
+const PUBLIC_FIRST_NAME = "Imane";
+const PUBLIC_LOCATION = "Morocco";
+
 const stats = [
   { num: "3+", label: "Years Exp." },
   { num: "20+", label: "Projects" },
@@ -16,7 +20,6 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Reduced parallax on mobile for smoothness
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
 
@@ -103,7 +106,7 @@ export default function Hero() {
         >
           <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-[#c9a84c]" />
           <span className="text-[#c9a84c] text-[10px] sm:text-xs tracking-[0.4em] sm:tracking-[0.5em] uppercase font-light whitespace-nowrap">
-            UI/UX Designer & Developer
+            Software Engineering & Visual Design
           </span>
           <div className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-[#c9a84c]" />
         </motion.div>
@@ -115,9 +118,9 @@ export default function Hero() {
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif leading-[0.88] tracking-[-0.02em] text-white"
-            style={{ fontSize: "clamp(3.5rem, 16vw, 7.5rem)" }}
+            style={{ fontSize: "clamp(3.5rem, 10vw, 7.5rem)" }}
           >
-            Imane
+            Hello, I am
           </motion.h1>
         </div>
         <div className="overflow-hidden mb-6 sm:mb-8">
@@ -131,7 +134,7 @@ export default function Hero() {
               backgroundImage: "linear-gradient(135deg, #c9a84c 0%, #f0d080 40%, #e8c060 60%, #a07830 100%)",
             }}
           >
-            Ella
+            {PUBLIC_FIRST_NAME}
           </motion.h1>
         </div>
 
@@ -140,12 +143,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.75 }}
-          className="text-[#5a5a5a] text-sm sm:text-base tracking-wide max-w-xs sm:max-w-md mx-auto leading-relaxed mb-8 sm:mb-12"
+          className="text-[#656565] text-sm sm:text-base tracking-wide max-w-xs sm:max-w-md mx-auto leading-relaxed mb-8 sm:mb-12 font-light"
         >
-          Crafting digital experiences where elegance meets function.
+I'm a technology enthusiast. I specialize in crafting seamless digital experiences that blend form and function.
           <br className="hidden sm:block" />
-          <span className="sm:hidden"> </span>
-          Based in Morocco · Open to opportunities.
+          <span className="sm:hidden "> </span>
+          <br/> 
+          <span className=" text-[9px] uppercase md:text-[10px] "> 
+          Based in Casablanca · Open to new projects
+          </span>
         </motion.p>
 
         {/* CTA buttons */}
@@ -159,20 +165,10 @@ export default function Hero() {
             href="#about"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className="relative w-full xs:w-auto px-7 sm:px-9 py-3.5 rounded-full text-xs sm:text-sm tracking-[0.15em] uppercase text-black font-medium overflow-hidden text-center"
+            className="relative w-50 md:w-auto xs:w-auto px-7 sm:px-9 py-3.5 rounded-full text-xs sm:text-sm tracking-[0.15em] uppercase text-black font-medium overflow-hidden text-center"
             style={{ background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 50%, #a07830 100%)" }}
           >
-            Discover More
-          </motion.a>
-          <motion.a
-            href="https://github.com/ImaneElla/ImanePortfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="w-full xs:w-auto px-7 sm:px-9 py-3.5 rounded-full text-xs sm:text-sm tracking-[0.15em] uppercase border border-[#c9a84c]/30 text-[#c9a84c] hover:border-[#c9a84c]/70 hover:bg-[#c9a84c]/5 transition-all duration-300 text-center"
-          >
-            View Work
+            Explore More
           </motion.a>
         </motion.div>
 
@@ -191,7 +187,7 @@ export default function Hero() {
               >
                 {s.num}
               </div>
-              <div className="text-[#3e3e3e] text-[9px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.3em] uppercase">
+              <div className="text-[#4a4a4a] text-[9px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.3em] uppercase">
                 {s.label}
               </div>
             </div>

@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Facebook } from "lucod-react";
 
 const socials = [
   {

@@ -120,7 +120,7 @@ const translations: Record<Language, Translations> = {
       "J'élargis constamment mon vocabulaire créatif et technique, transformant les outils de pointe en réalités utilisateurs fluides.",
     about_toolkit: "La Boîte à Outils",
     footer_tag: "Créons Ensemble",
-    footer_heading: "Vous avez un projet en tête ?",
+    footer_heading: "Vous avez un projet en tête?",
     footer_cta: "Envoyer un message",
     footer_rights: "Tous droits réservés.",
   },

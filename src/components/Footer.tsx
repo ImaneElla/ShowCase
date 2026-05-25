@@ -174,7 +174,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-[#282828] text-[10px] tracking-[0.15em] text-center sm:text-right">
-            © {new Date().getFullYear()} Imane Ella. All rights reserved.
+            © {new Date().getFullYear()} Imane Ella. All rights reserved
           </p>
         </motion.div>
       </div>

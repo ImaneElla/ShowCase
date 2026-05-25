@@ -114,7 +114,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm tracking-[0.2em] uppercase text-black font-medium"
               style={{ background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 50%, #a07830 100%)" }}
             >
-              <span>Send Message</span>
+              <span> {t.footer_cta}</span>
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

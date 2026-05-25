@@ -36,8 +36,7 @@ export default function LanguageSwitcher() {
         aria-label="Switch language"
       >
         <Globe size={14} />
-        <span>{current.flag}</span>
-        <span>{current.label}</span>
+                <span>{current.label}</span>
       </button>
 
       <AnimatePresence>
@@ -62,7 +61,6 @@ export default function LanguageSwitcher() {
                     : "text-[#8a8a8a] hover:bg-[#c9a84c]/10 hover:text-[#c9a84c]"
                 }`}
               >
-                <span>{lang.flag}</span>
                 <span>{lang.label}</span>
               </button>
             ))}

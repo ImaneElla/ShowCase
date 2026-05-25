@@ -2,26 +2,22 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
-// Safe generic placeholders for your public showcase
-const PUBLIC_FIRST_NAME = "Imane";
-const PUBLIC_LOCATION = "Morocco";
-
-const stats = [
-  { num: "3+", label: "Years Exp." },
-  { num: "20+", label: "Projects" },
-  { num: "100%", label: "Dedication" },
-];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const { t, isRTL } = useLanguage();
 
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  const stats = [
+      { value: t.hero_years, label: t.hero_years_label },
+      { value: t.hero_projects, label: t.hero_projects_label },
+      { value: t.hero_dedication, label: t.hero_dedication_label },
+    ];
+
 
   return (
     <section
@@ -81,7 +77,7 @@ export default function Hero() {
           className="text-[#c9a84c]/40 text-[9px] tracking-[0.5em] uppercase"
           style={{ writingMode: "vertical-rl" }}
         >
-          Scroll
+          {t.hero_scroll}
         </motion.span>
         <motion.div
           initial={{ scaleY: 0 }}
@@ -106,7 +102,7 @@ export default function Hero() {
         >
           <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-[#c9a84c]" />
           <span className="text-[#c9a84c] text-[10px] sm:text-xs tracking-[0.4em] sm:tracking-[0.5em] uppercase font-light whitespace-nowrap">
-            Software Engineering & Visual Design
+          {t.hero_subtitle}  
           </span>
           <div className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-[#c9a84c]" />
         </motion.div>
@@ -120,7 +116,7 @@ export default function Hero() {
             className="font-serif leading-[0.88] tracking-[-0.02em] text-white"
             style={{ fontSize: "clamp(3.5rem, 10vw, 7.5rem)" }}
           >
-            Hello, I am
+           {t.hero_heading1}
           </motion.h1>
         </div>
         <div className="overflow-hidden mb-6 sm:mb-8">
@@ -134,7 +130,7 @@ export default function Hero() {
               backgroundImage: "linear-gradient(135deg, #c9a84c 0%, #f0d080 40%, #e8c060 60%, #a07830 100%)",
             }}
           >
-            {PUBLIC_FIRST_NAME}
+            {t.hero_name}
           </motion.h1>
         </div>
 
@@ -145,12 +141,12 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.75 }}
           className="text-[#656565] text-sm sm:text-base tracking-wide max-w-xs sm:max-w-md mx-auto leading-relaxed mb-8 sm:mb-12 font-light"
         >
-I'm a technology enthusiast. I specialize in crafting seamless digital experiences that blend form and function.
+          {t.hero_description}
           <br className="hidden sm:block" />
           <span className="sm:hidden "> </span>
           <br/> 
           <span className=" text-[9px] uppercase md:text-[10px] "> 
-          Based in Casablanca · Open to new projects
+          {t.hero_based}
           </span>
         </motion.p>
 
@@ -168,7 +164,7 @@ I'm a technology enthusiast. I specialize in crafting seamless digital experienc
             className="relative w-50 md:w-auto xs:w-auto px-7 sm:px-9 py-3.5 rounded-full text-xs sm:text-sm tracking-[0.15em] uppercase text-black font-medium overflow-hidden text-center"
             style={{ background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 50%, #a07830 100%)" }}
           >
-            Explore More
+          {t.hero_cta}
           </motion.a>
         </motion.div>
 
@@ -185,7 +181,7 @@ I'm a technology enthusiast. I specialize in crafting seamless digital experienc
                 className="font-serif text-xl sm:text-2xl text-transparent bg-clip-text mb-0.5"
                 style={{ backgroundImage: "linear-gradient(135deg, #c9a84c, #f0d080)" }}
               >
-                {s.num}
+                {s.value}
               </div>
               <div className="text-[#4a4a4a] text-[9px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.3em] uppercase">
                 {s.label}

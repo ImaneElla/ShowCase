@@ -2,16 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { label: t.nav_home, href: "#home" },
+    { label: t.nav_about, href: "#about" },
+    { label: t.nav_contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -86,21 +89,15 @@ export default function Navbar() {
               </motion.li>
             ))}
           </ul>
+<div className="hidden md:flex">
+            <LanguageSwitcher />
+          </div>
 
-          {/* Desktop CTA */}
-          <motion.a
-            href="mailto:imane@email.com"
-            className="hidden md:inline-flex items-center gap-2 px-4 lg:px-5 py-2 rounded-full text-xs tracking-[0.15em] uppercase border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Hire Me
-          </motion.a>
-
-          {/* Mobile Hamburger */}
+       {/* Mobile: lang switcher + hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
           <button
-            className="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 -mr-1 z-10"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex flex-col justify-center gap-[5px] w-10 h-10 -mr-1 z-10" onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {[0, 1, 2].map((i) => (
@@ -118,6 +115,7 @@ export default function Navbar() {
               />
             ))}
           </button>
+        </div>
         </div>
       </motion.nav>
 

@@ -2,6 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+
 
 const socials = [
   {
@@ -49,6 +51,7 @@ const socials = [
 export default function Footer() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
+  const { t } = useLanguage();
 
   return (
     <footer
@@ -81,7 +84,7 @@ export default function Footer() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-[#c9a84c]/50 text-[10px] tracking-[0.5em] uppercase mb-4 sm:mb-5"
           >
-            Let's Create Together
+            {t.footer_cta}
           </motion.p>
 
           <motion.h2
@@ -91,13 +94,11 @@ export default function Footer() {
             className="font-serif text-white leading-[1.05] mb-8 sm:mb-10"
             style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }}
           >
-            Have a project
-            <br />
             <span
               className="text-transparent bg-clip-text"
               style={{ backgroundImage: "linear-gradient(135deg, #c9a84c 0%, #f0d080 50%, #a07830 100%)" }}
             >
-              in mind?
+                  {t.footer_heading}
             </span>
           </motion.h2>
 

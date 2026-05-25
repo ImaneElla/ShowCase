@@ -2,33 +2,13 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
-// Safe generic placeholders for your public showcase
-const PUBLIC_NAME = "Imane"; 
-const PUBLIC_EMAIL = "hello@imanella.com";
-
-const skills = [
+const toolkit  = [
   { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
   { category: "Backend", items: ["Node.js", "Java", "Spring Boot", "PostgreSQL"] },
   { category: "Motion", items: ["Framer Motion", "Tailwind CSS", "CSS Animations"] },
   { category: "Tools", items: ["Git", "Docker", "Vercel", "Firebase"] },
-];
-
-const values = [
-  {
-    icon: "✧",
-    title: "Aesthetic-First Architecture",
-    desc: "Code and couture share a secret: true beauty lives in structural elegance before decoration.",
-  },
-  {
-    icon: "✧",
-    title: "Detail-Obsessed Curation",
-    desc: "Chasing the flawless placement of every pixel, because micromoments form lasting impressions.",
-  },
-  {
-    icon: "✧",
-    title: "Continuous Evolution",
-desc: "Constantly expanding my creative and technical vocabulary, transforming cutting-edge tools into seamless user realities.",  },
 ];
 
 function FadeUp({
@@ -57,6 +37,19 @@ function FadeUp({
 }
 
 export default function About() {
+  const { t } = useLanguage();
+
+  const values = [  
+  {
+    icon: "✧",
+   title: t.about_value1_title, desc: t.about_value1_desc   },
+  {
+    icon: "✧",
+title: t.about_value2_title, desc: t.about_value2_desc  },
+  {
+    icon: "✧",
+title: t.about_value3_title, desc: t.about_value3_desc },
+    ];
   return (
     <section id="about" className="relative py-20 sm:py-28 lg:py-32 px-5 sm:px-8 bg-[#0a0a0a] overflow-hidden">
 
@@ -78,7 +71,7 @@ export default function About() {
         <FadeUp>
           <div className="flex items-center gap-3 mb-10 sm:mb-14 lg:mb-16">
             <div className="h-px w-8 sm:w-10 bg-gradient-to-r from-transparent to-[#c9a84c]" />
-            <span className="text-[#c9a84c]/70 text-[10px] tracking-[0.5em] uppercase">The Story</span>
+            <span className="text-[#c9a84c]/70 text-[10px] tracking-[0.5em] uppercase"> {t.about_tag}</span>
           </div>
         </FadeUp>
 
@@ -86,46 +79,30 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 mb-16 sm:mb-20 lg:mb-24">
 
           {/* Left — Bio */}
+          
       <div>
   <FadeUp delay={0.08}>
     <h2
       className="font-serif text-white leading-[1.1] mb-6 sm:mb-8"
       style={{ fontSize: "clamp(2rem, 6vw, 3.2rem)" }}
     >
-      Sculpting visual{" "}
-      <span
-        className="text-transparent bg-clip-text"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, #d4af37 0%, #f7e7a1 50%, #b8860b 100%)",
-        }}
-      >
-        poetry into flowing
-      </span>{" "}
-      digital experiences.
+         {t.about_heading}
     </h2>
   </FadeUp>
 
             <FadeUp delay={0.16}>
               <p className="text-[#8a8a8a] text-sm leading-[1.85] mb-4 sm:mb-5 tracking-wide font-light">
-                Hi there, I'm <span className="text-[#c9a84c] font-serif text-lg">Imane</span> — a modern full-stack developer and digital stylist 
-                who views software through an editorial lens. I curate interfaces where elegant layouts flawlessly embrace rigorous architectural logic.
-              </p>
-            </FadeUp>
-
-            <FadeUp delay={0.24}>
-              <p className="text-[#656565] text-sm leading-[1.85] mb-8 sm:mb-10 tracking-wide font-light">
-                Deeply inspired by high-fashion aesthetics, structural minimalism, and contemporary art, I translate complex technical problems into interfaces that feel incredibly effortless, intentional, and clean. Always dreaming up new ways to turn empty arrays into beautiful experiences.
-              </p>
+           {t.about_bio}
+             </p>
             </FadeUp>
 
             <FadeUp delay={0.3}>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href={`mailto:${PUBLIC_EMAIL}`}
+                  href={`mailto:hello@imaneella.com`}
                   className="inline-flex items-center px-5 sm:px-6 py-2.5 rounded-full border border-[#c9a84c]/30 text-[#c9a84c] text-[11px] tracking-[0.2em] uppercase hover:bg-[#c9a84c]/10 active:scale-95 transition-all duration-300"
                 >
-                  Initiate a Spark
+            {t.about_cta}
                 </a>
               </div>
             </FadeUp>
@@ -163,13 +140,12 @@ export default function About() {
             style={{ background: "linear-gradient(90deg, transparent, #c9a84c25, transparent)" }}
           />
           <h3 className="text-[#4a4a4a] text-[10px] tracking-[0.5em] uppercase mb-8 sm:mb-10 text-center">
-            The Toolkit
-          </h3>
+    {t.about_toolkit}          </h3>
         </FadeUp>
 
         {/* Skills grid — 2 cols mobile, 4 cols md+ */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-          {skills.map((group, gi) => (
+          {toolkit.map((group, gi) => (
             <FadeUp key={group.category} delay={0.07 * gi + 0.08}>
               <div className="h-full p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-[#1a1a1a] bg-[#0c0c0c]">
                 <div
